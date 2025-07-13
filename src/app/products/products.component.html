@@ -1,0 +1,41 @@
+<div class="container">
+ <ng-template #errors>
+    {{errorMessage}}
+ </ng-template>
+  <div class="card" *ngIf="products" >
+    <div class="card-header">List des produits</div>
+      <div class="card-body">
+        <table class="table">
+          <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Price</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let p of products"> <!--ngFor permet de lier les donne et la partie html -->
+            <td>{{p.id}}</td>
+            <td>{{p.name}}</td>
+            <td>{{p.price}}</td>
+            <td>
+              <i *ngIf="p.promotion==true" class="bi bi-heart-fill"></i>
+            </td>
+            <td>
+              <button (click)="handleSetPromotion(p)"[ngClass]="p.promotion==true?`btn btn-danger` : `btn btn-success`">
+              <span *ngIf="p.promotion==true">Promo On</span>
+              <span *ngIf="p.promotion==false" >Promo Off</span>
+              </button>
+            </td>
+            <td>
+              <button (click)="handleDeleteProduct(p)" class="btn btn-danger">
+                <i  class="bi bi-trash"></i>
+              </button>
+            </td>
+
+          </tr>
+          </tbody>
+        </table>
+      </div>
+  </div>
+</div>

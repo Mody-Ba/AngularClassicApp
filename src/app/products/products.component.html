@@ -5,6 +5,16 @@
   <div class="card" *ngIf="products" >
     <div class="card-header">List des produits</div>
       <div class="card-body">
+        <form [formGroup]="searchFormGroup" (ngSubmit)="handleSearchProducts()">
+          <div class="input-group">
+            <label class="input-group-text">keyword : </label>
+            <input type="text" class="form-control" formControlName="keyword">
+            <button class="btn btn-info" type="submit">
+              <i class="bi bi-search"></i>
+            </button>
+          </div>
+        </form>
+
         <table class="table">
           <thead>
           <tr>
